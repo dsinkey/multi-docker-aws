@@ -22,3 +22,15 @@ after_success:
   - docker push dsinkey9/multi-nginx
   - docker push dsinkey9/multi-server
   - docker push dsinkey9/multi-worker
+
+depoly:
+  provider: elasticbeanstalk
+  region: 'us-east-2'
+  app: 'multi-docker'
+  env: 'Multidocker-env-1'
+  bucket_name: 'elasticbeanstalk-us-east-2-562644066414'
+  bucket_path: 'docker-multi'
+  on:
+    branch: master
+  access_key_id: $AWS_ACCESS_KEY
+  secrest_access_key: $AWS_SECRET_KEY
